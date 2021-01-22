@@ -6,7 +6,7 @@
 
 namespace ca::ui
 {
-    class Page : public elm::Element
+    class Page : public elm::Element, public std::enable_shared_from_this<Page>
     {
         public:
             Page();

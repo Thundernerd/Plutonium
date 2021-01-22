@@ -8,7 +8,7 @@
 
 namespace ca::ui::elm
 {
-    class Element : public std::enable_shared_from_this<Element>
+    class Element
     {
         public:
             Element(i32 x, i32 y, i32 width, i32 height);

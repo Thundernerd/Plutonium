@@ -14,33 +14,40 @@ namespace ca::ui::elm
             Element(i32 x, i32 y, i32 width, i32 height);
             PU_SMART_CTOR(Element);
 
-            i32 GetX() { return this->x; }
-            i32 GetY() { return this->y; }
-            i32 GetWidth() { return this->width; }
-            i32 GetHeight() { return this->height; }
+            i32 GetX();
+            i32 GetY();
+            i32 GetWidth();
+            i32 GetHeight();
 
             i32 GetProcessedX();
             i32 GetProcessedY();
 
-            Element::Ref GetParent() { return this->parent; }
-            void SetParent(Element::Ref element) { this->parent = element; }
+            void SetX(i32 value);
+            void SetY(i32 value);
+            void SetWidth(i32 value);
+            void SetHeight(i32 value);
+            void SetPosition(i32 x, i32 y);
+            void SetSize(i32 width, i32 height);
 
-            void SetHorizontalAlignment(HorizontalAlignment horizontalAligment) { this->horizontalAlignment = horizontalAlignment; }
-            HorizontalAlignment GetHorizontalAlignment() { return this->horizontalAlignment; }
+            Element* GetParent();
+            void SetParent(Element* element);
 
-            void SetVerticalAlignment(VerticalAlignment verticalAlignment) { this->verticalAlignment = verticalAlignment; }
-            VerticalAlignment GetVerticalAlignment() { return this->verticalAlignment; }
+            void SetHorizontalAlignment(HorizontalAlignment horizontalAligment);
+            HorizontalAlignment GetHorizontalAlignment();
+
+            void SetVerticalAlignment(VerticalAlignment verticalAlignment);
+            VerticalAlignment GetVerticalAlignment();
 
             virtual void OnInput(app::Input input) {}
             virtual void OnRender(pu::ui::render::Renderer::Ref renderer) = 0;
 
-        protected:
+        private:
             i32 x;
             i32 y;
             i32 width;
             i32 height;
 
-            Element::Ref parent;
+            Element* parent;
 
             HorizontalAlignment horizontalAlignment;
             VerticalAlignment verticalAlignment;

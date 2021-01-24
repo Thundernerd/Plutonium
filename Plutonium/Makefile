@@ -17,7 +17,7 @@ include $(DEVKITPRO)/libnx/switch_rules
 #---------------------------------------------------------------------------------
 BUILD		:=	build
 TARGET		:=  pu
-SOURCES		:=	Source Source/pu Source/pu/audio Source/pu/ui Source/pu/ttf Source/pu/sdl2 Source/pu/ui/elm Source/pu/ui/extras Source/pu/ui/render Source/pu/web Source/ca Source/ca/app Source/ca/ui Source/ca/ui/elm
+SOURCES		:=	Source Source/ca Source/ca/app Source/ca/ui Source/ca/ui/elm Source/pu Source/pu/audio Source/pu/ui Source/pu/ttf Source/pu/sdl2 Source/pu/ui/elm Source/pu/ui/extras Source/pu/ui/render Source/pu/web 
 INCLUDES	:=	Include
 
 #---------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ CFLAGS	:=	-g -w -D__SWITCH__ \
 
 CFLAGS	+=	$(INCLUDE) -I$(PORTLIBS)/include/freetype2 -DPU_MAJOR=$(PU_MAJOR) -DPU_MINOR=$(PU_MINOR) -DPU_MICRO=$(PU_MICRO) -DPU_VERSION=\"$(PU_MAJOR).$(PU_MINOR).$(PU_MICRO)\"
 
-CXXFLAGS	:= $(CFLAGS) -fno-exceptions -std=gnu++17
+CXXFLAGS	:= $(CFLAGS) -std=gnu++17
 
 ASFLAGS	:=	-g $(ARCH)
 LDFLAGS	=	-specs=${DEVKITPRO}/libnx/switch.specs -g $(ARCH) -Wl,-r,-Map,$(notdir $*.map)

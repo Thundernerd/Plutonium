@@ -47,6 +47,8 @@ namespace ca::app
             return;
         }
 
+        this->input.Update();
+        this->currentPage->OnInput(this->input);
         this->currentPage->OnRender(renderer);
     }
 

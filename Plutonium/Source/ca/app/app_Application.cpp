@@ -6,7 +6,7 @@ namespace ca::app
     {
         this->isLoaded = false;
         this->isShown = false;
-        this->clearColor = pu::ui::Color::FromHex("6495ed");
+        this->clearColor = pu::ui::Color::FromHex("#6495ed");
         this->renderer = renderer;
     }
 

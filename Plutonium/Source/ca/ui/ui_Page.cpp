@@ -2,7 +2,7 @@
 
 namespace ca::ui
 {
-    Page::Page() : Element(0,0,1280,720)
+    Page::Page() : elm::Element(0,0,1280,720), std::enable_shared_from_this<Page>()
     {
     }
 
@@ -26,14 +26,14 @@ namespace ca::ui
             return;
         }
 
-        Element::Ref parent = element->GetParent();
+        Element* parent = element->GetParent();
         if (element != nullptr && std::is_same<Page, decltype(parent)>::value)
         {
-            std::shared_ptr<Page> parentPage = std::dynamic_pointer_cast<Page>(parent);
+            Page* parentPage = (Page*)parent;
             parentPage->RemoveElement(element);
         }
 
-        element->SetParent(shared_from_this());
+        element->SetParent(this);
         this->elements.push_back(element);
     }
 
@@ -76,11 +76,12 @@ namespace ca::ui
 
     void Page::OnRender(pu::ui::render::Renderer::Ref renderer)
     {
-        std::vector<Element::Ref> currentElements(this->elements);
+        std::vector<std::shared_ptr<Element>> currentElements(this->elements);
 
-        for(Element::Ref element : elements)
+        for (int i = 0; i < currentElements.size(); i++)
         {
-            element->OnRender(renderer);
+            auto item = currentElements.at(i);
+            item->OnRender(renderer);
         }
     }
 }

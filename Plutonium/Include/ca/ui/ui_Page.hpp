@@ -28,6 +28,6 @@ namespace ca::ui
 
         protected:
             ca::app::Application::Ref application;
-            std::vector<Element::Ref> elements;
+            std::vector<std::shared_ptr<Element>> elements;
     };
 }

@@ -17,13 +17,14 @@ namespace ca::app
             void Back();
 
         protected:
-            void OnRender(pu::ui::render::Renderer::Ref renderer);
+            void OnRender(pu::ui::render::Renderer::Ref renderer) override;
 
         private:
             void LoadPage(ui::Page::Ref page);
             int IndexOf(ui::Page::Ref page);
 
         private:
+            Input input;
             ui::Page::Ref currentPage;
             std::vector<ui::Page::Ref> pages;
     };

@@ -6,7 +6,7 @@ namespace ca::ui
     {
         Left,
         Center,
-        Right,
+        Right
     };
 
     enum class VerticalAlignment

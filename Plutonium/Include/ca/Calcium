@@ -2,10 +2,14 @@
 #include <pu/Plutonium>
 
 #include <ca/app/app_Application.hpp>
+#include <ca/app/app_PagedApplication.hpp>
 #include <ca/app/app_Input.hpp>
+#include <ca/app/app_Logger.hpp>
 
 #include <ca/ui/ui_Alignments.hpp>
 
 #include <ca/ui/elm/elm_Element.hpp>
+#include <ca/ui/elm/elm_Image.hpp>
+#include <ca/ui/elm/elm_Label.hpp>
 
 #include <ca/ui/ui_Page.hpp>

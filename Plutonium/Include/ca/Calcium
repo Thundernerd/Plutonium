@@ -9,6 +9,7 @@
 #include <ca/ui/ui_Alignments.hpp>
 
 #include <ca/ui/elm/elm_Element.hpp>
+#include <ca/ui/elm/elm_Container.hpp>
 #include <ca/ui/elm/elm_Image.hpp>
 #include <ca/ui/elm/elm_Label.hpp>
 

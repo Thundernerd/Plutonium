@@ -27,7 +27,7 @@ namespace ca::ui
         }
 
         Element* parent = element->GetParent();
-        if (element != nullptr && std::is_same<Page, decltype(parent)>::value)
+        if (parent != nullptr && std::is_same<Page, decltype(parent)>::value)
         {
             Page* parentPage = (Page*)parent;
             parentPage->RemoveElement(element);

@@ -6,8 +6,16 @@ namespace ca::app
     {
         this->isLoaded = false;
         this->isShown = false;
-        this->clearColor = pu::ui::Color::FromHex("#6495ed");
+        this->clearColor = HexColor("#6495ed");
         this->renderer = renderer;
+
+        ca::ui::Colors::SetStyle(
+            // Primary, Secondary
+            HexColor("#0D6EFD"), HexColor("#6C757D"), 
+            // Success, Danger, Warning, Info
+            HexColor("#198754"), HexColor("#DC3545"), HexColor("#FFC107"), HexColor("#0DCAF0"), 
+            // Light, Dark
+            HexColor("#F8F9FA"), HexColor("#212529"));
     }
 
     void Application::Prepare()

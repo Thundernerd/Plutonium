@@ -1,33 +1,47 @@
 #pragma once
 
 #include <ca/app/app_Application.hpp>
-#include <ca/ui/elm/elm_Element.hpp>
+#include <ca/ui/elm/elm_Container.hpp>
 #include <pu/ui/render/render_Renderer.hpp>
+#include <pu/sdl2/sdl2_Types.hpp>
 
 namespace ca::ui
 {
-    class Page : public elm::Element, public std::enable_shared_from_this<Page>
+    class Page : public elm::Container
     {
         public:
-            Page();
+            Page(pu::String title);
+            Page(pu::String title, pu::ui::Color titleColor);
+            Page(pu::ui::Color backgroundColor);
+            Page(pu::String title, pu::ui::Color titleColor, pu::ui::Color backgroundColor);
             PU_SMART_CTOR(Page);
 
-            virtual void Prepare(ca::app::Application::Ref application);
+            i32 GetX() override;
+            i32 GetY() override;
+            i32 GetWidth() override;
+            i32 GetHeight() override;
+
+            void SetTitle(pu::String value);
+            void SetTitleColor(pu::ui::Color value);
 
             virtual void OnShow();
             virtual void OnHide();
-
-            void AddElement(Element::Ref element);
-            void RemoveElement(Element::Ref element);
 
             void AddOverlay();
             void PopOverlay();
 
             void OnInput(ca::app::Input input) override;
-            void OnRender(pu::ui::render::Renderer::Ref renderer) override;
 
         protected:
-            ca::app::Application::Ref application;
-            std::vector<std::shared_ptr<Element>> elements;
+            void OnRenderBeforeChildren(pu::ui::render::Renderer::Ref renderer) override;
+            void OnRenderAfterChildren(pu::ui::render::Renderer::Ref renderer) override;
+
+        private:
+            void UpdateTitleTexture();
+
+        private:
+            pu::String title;
+            pu::ui::Color titleColor;
+            pu::sdl2::Texture titleTexture;
     };
 }

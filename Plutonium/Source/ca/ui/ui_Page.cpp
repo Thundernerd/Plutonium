@@ -1,14 +1,55 @@
 #include <ca/ui/ui_Page.hpp>
+#include <ca/ui/ui_Colors.hpp>
 
 namespace ca::ui
 {
-    Page::Page() : elm::Element(0,0,1280,720), std::enable_shared_from_this<Page>()
+    Page::Page(pu::String title) : Page(title, Colors::Light, Colors::Dark)
     {
     }
 
-    void Page::Prepare(ca::app::Application::Ref application)
+    Page::Page(pu::String title, pu::ui::Color titleColor) : Page(title, titleColor, Colors::Dark)
     {
-        this->application = application;
+    }
+
+    Page::Page(pu::ui::Color backgroundColor) : Page("", HexColor("#00000000"), backgroundColor)
+    {
+    }
+
+    Page::Page(pu::String title, pu::ui::Color titleColor, pu::ui::Color backgroundColor) : elm::Container(0,0,1280,720)
+    {
+        this->title = title;
+        this->titleColor = titleColor;
+        this->SetBackgroundColor(backgroundColor);
+    }
+
+    i32 Page::GetX()
+    {
+        return 0;
+    }
+
+    i32 Page::GetY()
+    {
+        return 100;
+    }
+
+    i32 Page::GetWidth()
+    {
+        return 1280;
+    }
+
+    i32 Page::GetHeight()
+    {
+        return 620;
+    }
+
+    void Page::SetTitle(pu::String value)
+    {
+        this->title = value;
+    }
+
+    void Page::SetTitleColor(pu::ui::Color value)
+    {
+        this->titleColor = value;
     }
 
     void Page::OnShow()
@@ -19,69 +60,43 @@ namespace ca::ui
     {
     }
 
-    void Page::AddElement(Element::Ref element)
-    {
-        if (element == nullptr)
-        {
-            return;
-        }
-
-        Element* parent = element->GetParent();
-        if (parent != nullptr && std::is_same<Page, decltype(parent)>::value)
-        {
-            Page* parentPage = (Page*)parent;
-            parentPage->RemoveElement(element);
-        }
-
-        element->SetParent(this);
-        this->elements.push_back(element);
-    }
-
-    void Page::RemoveElement(Element::Ref element)
-    {
-        i32 index = 0;
-        for(i32 i = 0; i < this->elements.size(); i++)
-        {
-            Element::Ref item = this->elements.at(i);
-            if (item == element)
-            {
-                index = i;
-                break;
-            }
-        }
-
-        this->elements.erase(this->elements.begin() + index);
-        element->SetParent(nullptr);
-    }
-
     void Page::AddOverlay()
     {
-
     }
 
     void Page::PopOverlay()
     {
-
     }
 
     void Page::OnInput(ca::app::Input input)
     {
-        std::vector<Element::Ref> currentElements(this->elements);
-
-        for(Element::Ref element : elements)
-        {
-            element->OnInput(input);
-        }
+        Container::OnInput(input);
     }
 
-    void Page::OnRender(pu::ui::render::Renderer::Ref renderer)
+    void Page::OnRenderBeforeChildren(pu::ui::render::Renderer::Ref renderer)
     {
-        std::vector<std::shared_ptr<Element>> currentElements(this->elements);
-
-        for (int i = 0; i < currentElements.size(); i++)
+        if (this->title == "")
         {
-            auto item = currentElements.at(i);
-            item->OnRender(renderer);
+            renderer->RenderRectangleFill(this->GetBackgroundColor(), 0, 0, 1280, 100);
+            return;
         }
+
+        renderer->RenderRectangleFill(Colors::Dark, 0, 0, 1280, 100);
+        // renderer->RenderTexture(this->titleTexture, 0, 0);
+    }
+
+    void Page::OnRenderAfterChildren(pu::ui::render::Renderer::Ref renderer)
+    {
+        if (this->title == "")
+        {
+            return;
+        }
+
+        renderer->RenderRectangle(Colors::Light, 20, 99, 1240, 2);
+    }
+
+    void Page::UpdateTitleTexture()
+    {
+        
     }
 }

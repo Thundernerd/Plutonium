@@ -78,6 +78,16 @@ namespace ca::ui::elm
         this->OnRenderAfterChildren(renderer);
     }
 
+    std::vector<Element::Ref> Container::GetChildren()
+    {
+        return this->children;
+    }
+
+    pu::ui::Color Container::GetBackgroundColor()
+    {
+        return this->backgroundColor;
+    }
+
     int Container::IndexOf(Element::Ref element)
     {
         for (int i = 0; i < this->children.size(); i++)

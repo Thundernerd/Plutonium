@@ -55,7 +55,6 @@ namespace ca::app
     void PagedApplication::LoadPage(ui::Page::Ref page)
     {
         this->currentPage = page;
-        page->Prepare(shared_from_this());
         page->OnShow();
     }
 

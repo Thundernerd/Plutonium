@@ -26,6 +26,9 @@ namespace ca::ui::elm
             virtual void OnRenderBeforeChildren(pu::ui::render::Renderer::Ref renderer) {}
             virtual void OnRenderAfterChildren(pu::ui::render::Renderer::Ref renderer) {}
 
+            std::vector<Element::Ref> GetChildren();
+            pu::ui::Color GetBackgroundColor();
+
         private:
             int IndexOf(Element::Ref element);
 

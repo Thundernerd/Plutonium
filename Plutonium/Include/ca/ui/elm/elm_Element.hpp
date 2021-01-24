@@ -14,29 +14,29 @@ namespace ca::ui::elm
             Element(i32 x, i32 y, i32 width, i32 height);
             PU_SMART_CTOR(Element);
 
-            i32 GetX();
-            i32 GetY();
-            i32 GetWidth();
-            i32 GetHeight();
+            virtual i32 GetX();
+            virtual i32 GetY();
+            virtual i32 GetWidth();
+            virtual i32 GetHeight();
 
-            i32 GetProcessedX();
-            i32 GetProcessedY();
+            virtual i32 GetProcessedX();
+            virtual i32 GetProcessedY();
 
-            void SetX(i32 value);
-            void SetY(i32 value);
-            void SetWidth(i32 value);
-            void SetHeight(i32 value);
-            void SetPosition(i32 x, i32 y);
-            void SetSize(i32 width, i32 height);
+            virtual void SetX(i32 value);
+            virtual void SetY(i32 value);
+            virtual void SetWidth(i32 value);
+            virtual void SetHeight(i32 value);
+            virtual void SetPosition(i32 x, i32 y);
+            virtual void SetSize(i32 width, i32 height);
 
-            Element* GetParent();
-            void SetParent(Element* element);
+            virtual Element* GetParent();
+            virtual void SetParent(Element* element);
 
-            void SetHorizontalAlignment(HorizontalAlignment horizontalAligment);
-            HorizontalAlignment GetHorizontalAlignment();
+            virtual void SetHorizontalAlignment(HorizontalAlignment horizontalAligment);
+            virtual HorizontalAlignment GetHorizontalAlignment();
 
-            void SetVerticalAlignment(VerticalAlignment verticalAlignment);
-            VerticalAlignment GetVerticalAlignment();
+            virtual void SetVerticalAlignment(VerticalAlignment verticalAlignment);
+            virtual VerticalAlignment GetVerticalAlignment();
 
             virtual void OnInput(app::Input input) {}
             virtual void OnRender(pu::ui::render::Renderer::Ref renderer) = 0;

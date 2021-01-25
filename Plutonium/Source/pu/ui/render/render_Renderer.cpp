@@ -165,6 +165,14 @@ namespace pu::ui::render
         SDL_RenderFillRect(g_renderer, &rect);
     }
 
+    void Renderer::RenderRectangleBorder(Color color, i32 x, i32 y, i32 width, i32 height, i32 size)
+    {
+        RenderRectangleFill(color, x, y, width + size, size);
+        RenderRectangleFill(color, x, y + height, width + size, size);
+        RenderRectangleFill(color, x, y, size, height + size);
+        RenderRectangleFill(color, x + width, y, size, height + size);
+    }
+
     void Renderer::RenderRectangleOutline(Color Color, u32 X, u32 Y, u32 Width, u32 Height, u32 BorderWidth)
     {
         this->RenderRectangleFill(Color, X - BorderWidth, Y - BorderWidth, Width + (BorderWidth * 2), Height + (BorderWidth * 2));

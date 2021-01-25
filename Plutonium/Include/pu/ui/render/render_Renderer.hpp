@@ -107,6 +107,7 @@ namespace pu::ui::render
             void RenderTexture(sdl2::Texture Texture, i32 X, i32 Y, TextureRenderOptions Options = TextureRenderOptions::Default);
             void RenderRectangle(Color Color, i32 X, i32 Y, i32 Width, i32 Height);
             void RenderRectangleFill(Color Color, i32 X, i32 Y, i32 Width, i32 Height);
+            void RenderRectangleBorder(Color color, i32 x, i32 y, i32 width, i32 height, i32 size);
             void RenderRectangleOutline(Color Color, u32 X, u32 Y, u32 Width, u32 Height, u32 BorderWidth);
             void RenderRoundedRectangle(Color Color, i32 X, i32 Y, i32 Width, i32 Height, i32 Radius);
             void RenderRoundedRectangleFill(Color Color, i32 X, i32 Y, i32 Width, i32 Height, i32 Radius);

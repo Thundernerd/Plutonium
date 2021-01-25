@@ -9,7 +9,7 @@ namespace ca::ui::elm
         this->y = y;
         this->width = width;
         this->height = height;
-        this->horizontalAlignment = HorizontalAlignment::Right;
+        this->horizontalAlignment = HorizontalAlignment::Left;
         this->verticalAlignment = VerticalAlignment::Top;
     }
 

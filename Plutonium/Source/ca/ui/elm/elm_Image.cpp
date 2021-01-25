@@ -49,7 +49,6 @@ namespace ca::ui::elm
 
     void Image::SetTexture(pu::sdl2::Texture texture)
     {
-        // this->DeleteTexture();
         this->texture = texture;
         auto w = pu::ui::render::GetTextureWidth(this->texture);
         auto h = pu::ui::render::GetTextureHeight(this->texture);

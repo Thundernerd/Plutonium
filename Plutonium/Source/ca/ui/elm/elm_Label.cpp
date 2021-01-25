@@ -2,10 +2,14 @@
 
 namespace ca::ui::elm
 {
-    Label::Label(i32 x, i32 y, pu::String text, pu::ui::Color color) : Image(x, y, "")
+    Label::Label(i32 x, i32 y, pu::String text, pu::ui::Color color) : Label(x,y,text,"DefaultFont@25", color)
+    {
+    }
+
+    Label::Label(i32 x, i32 y, pu::String text, pu::String font, pu::ui::Color color) : Image(x, y, "")
     {
         this->color = color;
-        this->font = "DefaultFont@25";
+        this->font = font;
         this->text = text;
 
         this->UpdateTexture();
@@ -27,6 +31,21 @@ namespace ca::ui::elm
     {
         this->text = text;
         this->UpdateTexture();
+    }
+
+    pu::ui::Color Label::GetColor()
+    {
+        return this->color;
+    }
+
+    pu::String Label::GetFont()
+    {
+        return this->font;
+    }
+
+    pu::String Label::GetText()
+    {
+        return this->text;
     }
 
     void Label::UpdateTexture()

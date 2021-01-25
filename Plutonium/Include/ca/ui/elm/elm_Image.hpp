@@ -20,10 +20,10 @@ namespace ca::ui::elm
             void OnRender(pu::ui::render::Renderer::Ref renderer) override;
 
         protected:
+            void DeleteTexture();
             void SetTexture(pu::sdl2::Texture texture);
 
         private:
-            void DeleteTexture();
             void LoadTextureFromFile(pu::String path);
 
         protected:

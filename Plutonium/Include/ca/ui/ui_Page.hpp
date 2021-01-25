@@ -2,6 +2,7 @@
 
 #include <ca/app/app_Application.hpp>
 #include <ca/ui/elm/elm_Container.hpp>
+#include <ca/ui/elm/elm_Label.hpp>
 #include <pu/ui/render/render_Renderer.hpp>
 #include <pu/sdl2/sdl2_Types.hpp>
 
@@ -37,11 +38,6 @@ namespace ca::ui
             void OnRenderAfterChildren(pu::ui::render::Renderer::Ref renderer) override;
 
         private:
-            void UpdateTitleTexture();
-
-        private:
-            pu::String title;
-            pu::ui::Color titleColor;
-            pu::sdl2::Texture titleTexture;
+            ca::ui::elm::Label::Ref titleLabel;
     };
 }

@@ -3,11 +3,11 @@
 
 namespace ca::ui
 {
-    Page::Page(pu::String title) : Page(title, Colors::Light, Colors::Dark)
+    Page::Page(pu::String title) : Page(title, Colors::Foreground, Colors::Background)
     {
     }
 
-    Page::Page(pu::String title, pu::ui::Color titleColor) : Page(title, titleColor, Colors::Dark)
+    Page::Page(pu::String title, pu::ui::Color titleColor) : Page(title, titleColor, Colors::Background)
     {
     }
 
@@ -17,8 +17,11 @@ namespace ca::ui
 
     Page::Page(pu::String title, pu::ui::Color titleColor, pu::ui::Color backgroundColor) : elm::Container(0,0,1280,720)
     {
-        this->title = title;
-        this->titleColor = titleColor;
+        this->titleLabel = ca::ui::elm::Label::New(70, 0, title, "DefaultFont@30", titleColor);
+        
+        auto height = this->titleLabel->GetHeight();
+        this->titleLabel->SetY(55-(height/2));
+
         this->SetBackgroundColor(backgroundColor);
     }
 
@@ -44,12 +47,12 @@ namespace ca::ui
 
     void Page::SetTitle(pu::String value)
     {
-        this->title = value;
+        this->titleLabel->SetText(value);
     }
 
     void Page::SetTitleColor(pu::ui::Color value)
     {
-        this->titleColor = value;
+        this->titleLabel->SetColor(value);
     }
 
     void Page::OnShow()
@@ -75,28 +78,23 @@ namespace ca::ui
 
     void Page::OnRenderBeforeChildren(pu::ui::render::Renderer::Ref renderer)
     {
-        if (this->title == "")
+        if (this->titleLabel->GetText() == "")
         {
             renderer->RenderRectangleFill(this->GetBackgroundColor(), 0, 0, 1280, 100);
             return;
         }
 
-        renderer->RenderRectangleFill(Colors::Dark, 0, 0, 1280, 100);
-        // renderer->RenderTexture(this->titleTexture, 0, 0);
+        renderer->RenderRectangleFill(Colors::Background, 0, 0, 1280, 100);
+        this->titleLabel->OnRender(renderer);
     }
 
     void Page::OnRenderAfterChildren(pu::ui::render::Renderer::Ref renderer)
     {
-        if (this->title == "")
+        if (this->titleLabel->GetText() == "")
         {
             return;
         }
 
-        renderer->RenderRectangle(Colors::Light, 20, 99, 1240, 2);
-    }
-
-    void Page::UpdateTitleTexture()
-    {
-        
+        renderer->RenderRectangle(Colors::Foreground, 40, 100, 1200, 1);
     }
 }

@@ -4,22 +4,20 @@ namespace ca::ui
 {
     pu::ui::Color Colors::Primary;
     pu::ui::Color Colors::Secondary;
-    pu::ui::Color Colors::Success;
-    pu::ui::Color Colors::Danger;
-    pu::ui::Color Colors::Warning;
-    pu::ui::Color Colors::Info;
-    pu::ui::Color Colors::Light;
-    pu::ui::Color Colors::Dark;
+    pu::ui::Color Colors::Foreground;
+    pu::ui::Color Colors::Background;
+    pu::ui::Color Colors::BackgroundSecondary;
+    pu::ui::Color Colors::Overlay;
+    pu::ui::Color Colors::OverlaySecondary;
 
-    void Colors::SetStyle(pu::ui::Color primary, pu::ui::Color secondary, pu::ui::Color success, pu::ui::Color danger, pu::ui::Color warning, pu::ui::Color info, pu::ui::Color light, pu::ui::Color dark)
+    void Colors::SetStyle(pu::ui::Color primary, pu::ui::Color secondary, pu::ui::Color foreground, pu::ui::Color background, pu::ui::Color BackgroundSecondary, pu::ui::Color overlay, pu::ui::Color overlaySecondary)
     {
         Colors::Primary = primary;
         Colors::Secondary = secondary;
-        Colors::Success = success;
-        Colors::Danger = danger;
-        Colors::Warning = warning;
-        Colors::Info = info;
-        Colors::Light = light;
-        Colors::Dark = dark;
+        Colors::Foreground = foreground;
+        Colors::Background = background;
+        Colors::BackgroundSecondary = BackgroundSecondary;
+        Colors::Overlay = overlay;
+        Colors::OverlaySecondary = overlaySecondary;
     }
 }

@@ -11,11 +11,11 @@ namespace ca::app
 
         ca::ui::Colors::SetStyle(
             // Primary, Secondary
-            HexColor("#0D6EFD"), HexColor("#6C757D"), 
-            // Success, Danger, Warning, Info
-            HexColor("#198754"), HexColor("#DC3545"), HexColor("#FFC107"), HexColor("#0DCAF0"), 
-            // Light, Dark
-            HexColor("#F8F9FA"), HexColor("#212529"));
+            HexColor("#00FEC5"), HexColor("#1D9BF3"), 
+            // Foreground, Background, BackgroundSecondary
+            HexColor("#FFFFFF"), HexColor("#2D2D2D"), HexColor("#323232"), 
+            // Overlay, OverlaySecondary
+            HexColor("#464646"), HexColor("#4B4B4B"));
     }
 
     void Application::Prepare()
